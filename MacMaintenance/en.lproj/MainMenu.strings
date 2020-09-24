@@ -1,0 +1,435 @@
+
+/* Class = "NSMenu"; title = "AMainMenu"; ObjectID = "29"; */
+"29.title" = "AMainMenu";
+
+/* Class = "NSMenuItem"; title = "MacMaintenance"; ObjectID = "56"; */
+"56.title" = "MacMaintenance";
+
+/* Class = "NSMenu"; title = "MacMaintenance"; ObjectID = "57"; */
+"57.title" = "MacMaintenance";
+
+/* Class = "NSMenuItem"; title = "About MacMaintenance"; ObjectID = "58"; */
+"58.title" = "About MacMaintenance";
+
+/* Class = "NSMenuItem"; title = "Hide MacMaintenance"; ObjectID = "134"; */
+"134.title" = "Hide MacMaintenance";
+
+/* Class = "NSMenuItem"; title = "Quit MacMaintenance"; ObjectID = "136"; */
+"136.title" = "Quit MacMaintenance";
+
+/* Class = "NSMenuItem"; title = "HIde others"; ObjectID = "145"; */
+"145.title" = "HIde others";
+
+/* Class = "NSMenuItem"; title = "Show all"; ObjectID = "150"; */
+"150.title" = "Show all";
+
+/* Class = "NSWindow"; title = "MacMaintenance"; ObjectID = "371"; */
+"371.title" = "MacMaintenance";
+
+/* Class = "NSMenuItem"; title = "Help"; ObjectID = "490"; */
+"490.title" = "Help";
+
+/* Class = "NSTabViewItem"; label = "Finder"; ObjectID = "535"; */
+"535.label" = "Finder";
+
+/* Class = "NSTabViewItem"; label = "System"; ObjectID = "536"; */
+"536.label" = "System";
+
+/* Class = "NSTextFieldCell"; title = "Show files (e.g. system files) that are hidden by default"; ObjectID = "554"; */
+"554.title" = "Show files (e.g. system files) that are hidden by default";
+
+/* Class = "NSTextFieldCell"; title = "Show hidden files"; ObjectID = "640"; */
+"640.title" = "Show hidden files";
+
+/* Class = "NSTextFieldCell"; title = "Show library folder"; ObjectID = "668"; */
+"668.title" = "Show library folder";
+
+/* Class = "NSTextFieldCell"; title = "Make the user's Library folder visible"; ObjectID = "674"; */
+"674.title" = "Make the user's Library folder visible";
+
+/* Class = "NSTabViewItem"; label = "Information"; ObjectID = "723"; */
+"723.label" = "Information";
+
+/* Class = "NSTextFieldCell"; title = "Run periodical scripts"; ObjectID = "764"; */
+"764.title" = "Run periodical scripts";
+
+/* Class = "NSTextFieldCell"; title = "Executes the periodical scripts (daily, weekly, monthly) manually"; ObjectID = "771"; */
+"771.title" = "Executes the periodical scripts (daily, weekly, monthly) manually";
+
+/* Class = "NSButtonCell"; title = "Run"; ObjectID = "777"; */
+"777.title" = "Run";
+
+/* Class = "NSTextFieldCell"; title = "Delete Caches"; ObjectID = "803"; */
+"803.title" = "Delete Caches";
+
+/* Class = "NSTextFieldCell"; title = "Deletes the user cache and system caches. A restart is recommended afterwards."; ObjectID = "808"; */
+"808.title" = "Deletes the user cache and system caches. A restart is recommended afterwards.";
+
+/* Class = "NSButtonCell"; title = "Delete"; ObjectID = "813"; */
+"813.title" = "Delete";
+
+/* Class = "NSTextFieldCell"; title = "Show warning before emptying the trash"; ObjectID = "820"; */
+"820.title" = "Show warning before emptying the trash";
+
+/* Class = "NSTextFieldCell"; title = "Do you want to see the warning before emptying the trash?"; ObjectID = "825"; */
+"825.title" = "Do you want to see the warning before emptying the trash?";
+
+/* Class = "NSTextFieldCell"; title = "Enable remote disc"; ObjectID = "848"; */
+"848.title" = "Enable remote disc";
+
+/* Class = "NSTextFieldCell"; title = "Do you want to enable the \"remote disk\" feature?"; ObjectID = "858"; */
+"858.title" = "Do you want to enable the \"remote disk\" feature?";
+
+/* Class = "NSTextFieldCell"; title = "Free inactive memory"; ObjectID = "887"; */
+"887.title" = "Free inactive memory";
+
+/* Class = "NSTextFieldCell"; title = "Deletes and releases all inactive memory"; ObjectID = "892"; */
+"892.title" = "Deletes and releases all inactive memory";
+
+/* Class = "NSButtonCell"; title = "Free"; ObjectID = "897"; */
+"897.title" = "Free";
+
+/* Class = "NSTextFieldCell"; title = "Reset CUPS printing system"; ObjectID = "902"; */
+"902.title" = "Reset CUPS printing system";
+
+/* Class = "NSTextFieldCell"; title = "Resets the CUPS printing system"; ObjectID = "906"; */
+"906.title" = "Resets the CUPS printing system";
+
+/* Class = "NSButtonCell"; title = "Reset"; ObjectID = "910"; */
+"910.title" = "Reset";
+
+/* Class = "NSButtonCell"; title = "Admin"; ObjectID = "914"; */
+"914.title" = "Admin";
+
+/* Class = "NSTabViewItem"; label = "Dock"; ObjectID = "971"; */
+"971.label" = "Dock";
+
+/* Class = "NSTextFieldCell"; title = "Transparent icons for hidden applications"; ObjectID = "974"; */
+"974.title" = "Transparent icons for hidden applications";
+
+/* Class = "NSTextFieldCell"; title = "Do you want to make hidden dock items transparent?"; ObjectID = "978"; */
+"978.title" = "Do you want to make hidden dock items transparent?";
+
+/* Class = "NSButtonCell"; title = "Rebuild"; ObjectID = "1017"; */
+"1017.title" = "Rebuild";
+
+/* Class = "NSTextFieldCell"; title = "Rebuild spotlight index"; ObjectID = "1021"; */
+"1021.title" = "Rebuild spotlight index";
+
+/* Class = "NSTextFieldCell"; title = "Resets and rebuilds the spotlight index for your system partition"; ObjectID = "1026"; */
+"1026.title" = "Resets and rebuilds the spotlight index for your system partition";
+
+/* Class = "NSTextFieldCell"; title = "Enable Time Machine backups on unsupported volumes"; ObjectID = "1110"; */
+"1110.title" = "Enable Time Machine backups on unsupported volumes";
+
+/* Class = "NSTextFieldCell"; title = "Do you want to enable backups on unsupported volumes?"; ObjectID = "1119"; */
+"1119.title" = "Do you want to enable backups on unsupported volumes?";
+
+/* Class = "NSTextFieldCell"; title = "Expanded save panel"; ObjectID = "1176"; */
+"1176.title" = "Expanded save panel";
+
+/* Class = "NSTextFieldCell"; title = "Do you want to enable the expanded save panel by default?"; ObjectID = "1180"; */
+"1180.title" = "Do you want to enable the expanded save panel by default?";
+
+/* Class = "NSButtonCell"; title = "Rebuild"; ObjectID = "1236"; */
+"1236.title" = "Rebuild";
+
+/* Class = "NSTextFieldCell"; title = "Rebuild font caches"; ObjectID = "1240"; */
+"1240.title" = "Rebuild font caches";
+
+/* Class = "NSTextFieldCell"; title = "Rebuilds the font cache for user and system"; ObjectID = "1247"; */
+"1247.title" = "Rebuilds the font cache for user and system";
+
+/* Class = "NSTabViewItem"; label = "Caches"; ObjectID = "1468"; */
+"1468.label" = "Caches";
+
+/* Class = "NSTextFieldCell"; title = "Reset Mac OS X to the initial setup assisant"; ObjectID = "1843"; */
+"1843.title" = "Reset Mac OS X to the initial setup assisant";
+
+/* Class = "NSTextFieldCell"; title = "Do you want to enable the initial setup assistant after reboot?"; ObjectID = "1849"; */
+"1849.title" = "Do you want to enable the initial setup assistant after reboot?";
+
+/* Class = "NSTextFieldCell"; title = "* all printers and printing jobs will be deleted"; ObjectID = "1861"; */
+"1861.title" = "* all printers and printing jobs will be deleted";
+
+/* Class = "NSTextFieldCell"; title = "Enable AirDrop (experimental)"; ObjectID = "2011"; */
+"2011.title" = "Enable AirDrop (experimental)";
+
+/* Class = "NSTextFieldCell"; title = "Do you want to enable AirDrop on older macs and over ethernet?"; ObjectID = "2017"; */
+"2017.title" = "Do you want to enable AirDrop on older macs and over ethernet?";
+
+/* Class = "NSTextFieldCell"; title = "Enable PHP 7 module for the built-in apache2 webserver"; ObjectID = "2063"; */
+"2063.title" = "Enable PHP 7 module for the built-in apache2 webserver";
+
+/* Class = "NSTextFieldCell"; title = "Do you want to enable the PHP 7 module for the built-in webserver?"; ObjectID = "2069"; */
+"2069.title" = "Do you want to enable the PHP 7 module for the built-in webserver?";
+
+/* Class = "NSToolbarItem"; label = "Information"; ObjectID = "2146"; */
+"2146.label" = "Information";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Information"; ObjectID = "2146"; */
+"2146.paletteLabel" = "Information";
+
+/* Class = "NSToolbarItem"; label = "System"; ObjectID = "2147"; */
+"2147.label" = "System";
+
+/* Class = "NSToolbarItem"; paletteLabel = "System"; ObjectID = "2147"; */
+"2147.paletteLabel" = "System";
+
+/* Class = "NSToolbarItem"; label = "Caches"; ObjectID = "2148"; */
+"2148.label" = "Caches";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Caches"; ObjectID = "2148"; */
+"2148.paletteLabel" = "Caches";
+
+/* Class = "NSToolbarItem"; label = "Dock"; ObjectID = "2149"; */
+"2149.label" = "Dock";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Dock"; ObjectID = "2149"; */
+"2149.paletteLabel" = "Dock";
+
+/* Class = "NSTextFieldCell"; title = "Screenshots without shadows"; ObjectID = "2190"; */
+"2190.title" = "Screenshots without shadows";
+
+/* Class = "NSTextFieldCell"; title = "Do you want to disable window shadows in screenshots?"; ObjectID = "2192"; */
+"2192.title" = "Do you want to disable window shadows in screenshots?";
+
+/* Class = "NSTextFieldCell"; title = "* you can create them with CMD + Shift + 4 and then press spacebar"; ObjectID = "2194"; */
+"2194.title" = "* you can create them with CMD + Shift + 4 and then press spacebar";
+
+/* Class = "NSToolbarItem"; label = "Finder"; ObjectID = "2201"; */
+"2201.label" = "Finder";
+
+/* Class = "NSToolbarItem"; paletteLabel = "Finder"; ObjectID = "2201"; */
+"2201.paletteLabel" = "Finder";
+
+/* Class = "NSButtonCell"; title = "Reset"; ObjectID = "2275"; */
+"2275.title" = "Reset";
+
+/* Class = "NSTextFieldCell"; title = "Rebuilds your \"Open with\" menu"; ObjectID = "2276"; */
+"2276.title" = "Rebuilds your \"Open with\" menu";
+
+/* Class = "NSTextFieldCell"; title = "Reset LaunchService database"; ObjectID = "2277"; */
+"2277.title" = "Reset LaunchService database";
+
+/* Class = "NSButtonCell"; title = "Change"; ObjectID = "2282"; */
+"2282.title" = "Change";
+
+/* Class = "NSTextFieldCell"; title = "You can specify the size of your dock in pixels"; ObjectID = "2283"; */
+"2283.title" = "You can specify the size of your dock in pixels";
+
+/* Class = "NSTextFieldCell"; title = "Specify the dock size in pixels"; ObjectID = "2284"; */
+"2284.title" = "Specify the dock size in pixels";
+
+/* Class = "NSTextFieldCell"; title = "Enable built-in apache2 webserver"; ObjectID = "2290"; */
+"2290.title" = "Enable built-in apache2 webserver";
+
+/* Class = "NSTextFieldCell"; title = "Do you want to enable the built-in apache2 webserver?"; ObjectID = "2292"; */
+"2292.title" = "Do you want to enable the built-in apache2 webserver?";
+
+/* Class = "NSButtonCell"; title = "Reset"; ObjectID = "01c-NJ-p37"; */
+"01c-NJ-p37.title" = "Reset";
+
+/* Class = "NSTextFieldCell"; title = "* the default document root is /Library/WebServer/Documents/"; ObjectID = "0PQ-HF-Rad"; */
+"0PQ-HF-Rad.title" = "* the default document root is /Library/WebServer/Documents/";
+
+/* Class = "NSTextFieldCell"; title = "Custom animation speed for hiding Dock"; ObjectID = "1Ue-cY-5WE"; */
+"1Ue-cY-5WE.title" = "Custom animation speed for hiding Dock";
+
+/* Class = "NSTextFieldCell"; title = "unknown"; ObjectID = "1tJ-XM-s5c"; */
+"1tJ-XM-s5c.title" = "unknown";
+
+/* Class = "NSTextFieldCell"; title = "Network MAC address en1"; ObjectID = "1u5-7t-jnC"; */
+"1u5-7t-jnC.title" = "Network MAC address en1";
+
+/* Class = "NSTextFieldCell"; title = "TRIM Support (SATA only)"; ObjectID = "1wr-pq-swA"; */
+"1wr-pq-swA.title" = "TRIM Support (SATA only)";
+
+/* Class = "NSTextFieldCell"; title = "Enable TRIM on 3rd party solid state drives (SSDs)"; ObjectID = "2Kb-oX-GGy"; */
+"2Kb-oX-GGy.title" = "Enable TRIM on 3rd party solid state drives (SSDs)";
+
+/* Class = "NSTextFieldCell"; title = "unknown"; ObjectID = "3gV-Cw-paV"; */
+"3gV-Cw-paV.title" = "unknown";
+
+/* Class = "NSButtonCell"; title = "Add"; ObjectID = "3vv-uH-zFv"; */
+"3vv-uH-zFv.title" = "Add";
+
+/* Class = "NSTextFieldCell"; title = "Hard Drive Size"; ObjectID = "4Sg-Um-qet"; */
+"4Sg-Um-qet.title" = "Hard Drive Size";
+
+/* Class = "NSButtonCell"; title = "Delete"; ObjectID = "6v4-nh-z9R"; */
+"6v4-nh-z9R.title" = "Delete";
+
+/* Class = "NSTextFieldCell"; title = "unknown"; ObjectID = "7Y4-kh-yDz"; */
+"7Y4-kh-yDz.title" = "unknown";
+
+/* Class = "NSTextFieldCell"; title = "unknown"; ObjectID = "8qn-Ra-gyU"; */
+"8qn-Ra-gyU.title" = "unknown";
+
+/* Class = "NSTextFieldCell"; title = "Delete DNS Caches"; ObjectID = "8xQ-gK-m53"; */
+"8xQ-gK-m53.title" = "Delete DNS Caches";
+
+/* Class = "NSTextFieldCell"; title = "* your system might appear to be frozen for a couple of seconds, please wait for for the automatic reboot"; ObjectID = "AMk-YT-GEr"; */
+"AMk-YT-GEr.title" = "* your system might appear to be frozen for a couple of seconds, please wait for for the automatic reboot";
+
+/* Class = "NSTextFieldCell"; title = "Single application mode"; ObjectID = "AZ4-m5-x5o"; */
+"AZ4-m5-x5o.title" = "Single application mode";
+
+/* Class = "NSTextFieldCell"; title = "unknown"; ObjectID = "Ajm-Yt-b3j"; */
+"Ajm-Yt-b3j.title" = "unknown";
+
+/* Class = "NSTextFieldCell"; title = "This stack will display recently opened applications"; ObjectID = "BAn-f2-GUz"; */
+"BAn-f2-GUz.title" = "This stack will display recently opened applications";
+
+/* Class = "NSTextFieldCell"; title = "Do you want to enable TRIM on your SSD? Your Mac will reboot automatically afterwards"; ObjectID = "Bhh-vO-Muk"; */
+"Bhh-vO-Muk.title" = "Do you want to enable TRIM on your SSD? Your Mac will reboot automatically afterwards";
+
+/* Class = "NSTextFieldCell"; title = "Processor (Threads)"; ObjectID = "FMI-ca-OaQ"; */
+"FMI-ca-OaQ.title" = "Processor (Threads)";
+
+/* Class = "NSTextFieldCell"; title = "Hard Drive Used"; ObjectID = "FYT-8g-cHe"; */
+"FYT-8g-cHe.title" = "Hard Drive Used";
+
+/* Class = "NSTextFieldCell"; title = "Allow unknown servers"; ObjectID = "Ghy-Ww-XXx"; */
+"Ghy-Ww-XXx.title" = "Allow unknown servers";
+
+/* Class = "NSTextFieldCell"; title = "Disable confirmation before reconnecting to a password protected network volume"; ObjectID = "IOz-aH-1cU"; */
+"IOz-aH-1cU.title" = "Disable confirmation before reconnecting to a password protected network volume";
+
+/* Class = "NSButtonCell"; title = "Change"; ObjectID = "IWh-jU-Rvh"; */
+"IWh-jU-Rvh.title" = "Change";
+
+/* Class = "NSTextFieldCell"; title = "unknown"; ObjectID = "Kdt-FR-o6N"; */
+"Kdt-FR-o6N.title" = "unknown";
+
+/* Class = "NSTextFieldCell"; title = "unknown"; ObjectID = "LY2-7h-yhI"; */
+"LY2-7h-yhI.title" = "unknown";
+
+/* Class = "NSTextFieldCell"; title = "unknown"; ObjectID = "MYM-D1-WqZ"; */
+"MYM-D1-WqZ.title" = "unknown";
+
+/* Class = "NSTextFieldCell"; title = "Enables the thumbnail (and therefore the delay) when taking screenshots"; ObjectID = "Ncz-aa-rsY"; */
+"Ncz-aa-rsY.title" = "Enables the thumbnail (and therefore the delay) when taking screenshots";
+
+/* Class = "NSTextFieldCell"; title = "Deletes the local DNS cache (used for resolving hostnames and domains)"; ObjectID = "QrY-Oe-NoU"; */
+"QrY-Oe-NoU.title" = "Deletes the local DNS cache (used for resolving hostnames and domains)";
+
+/* Class = "NSTextFieldCell"; title = "unknown"; ObjectID = "SUU-Yf-krG"; */
+"SUU-Yf-krG.title" = "unknown";
+
+/* Class = "NSTextFieldCell"; title = "Graphics Card (Integrated)"; ObjectID = "SZH-cq-tKd"; */
+"SZH-cq-tKd.title" = "Graphics Card (Integrated)";
+
+/* Class = "NSTextFieldCell"; title = "Graphics Card (Dedicated)"; ObjectID = "SoB-gV-NgM"; */
+"SoB-gV-NgM.title" = "Graphics Card (Dedicated)";
+
+/* Class = "NSTextFieldCell"; title = "Hard Drive Type"; ObjectID = "TWh-KG-JpP"; */
+"TWh-KG-JpP.title" = "Hard Drive Type";
+
+/* Class = "NSTextFieldCell"; title = "unknown"; ObjectID = "U2C-RW-RQz"; */
+"U2C-RW-RQz.title" = "unknown";
+
+/* Class = "NSTextFieldCell"; title = "Memory (Total in GB)"; ObjectID = "Vhn-oA-JUP"; */
+"Vhn-oA-JUP.title" = "Memory (Total in GB)";
+
+/* Class = "NSTextFieldCell"; title = "unknown"; ObjectID = "WC1-dD-m0U"; */
+"WC1-dD-m0U.title" = "unknown";
+
+/* Class = "NSTextFieldCell"; title = "Show screenshot thumbnail"; ObjectID = "WsX-mk-ARL"; */
+"WsX-mk-ARL.title" = "Show screenshot thumbnail";
+
+/* Class = "NSTextFieldCell"; title = "Specify the hiding delay of the Dock in seconds"; ObjectID = "YDR-jg-xpP"; */
+"YDR-jg-xpP.title" = "Specify the hiding delay of the Dock in seconds";
+
+/* Class = "NSButtonCell"; title = "Change"; ObjectID = "Z8t-ze-mXM"; */
+"Z8t-ze-mXM.title" = "Change";
+
+/* Class = "NSTextFieldCell"; title = "This will make Finder display the full posix path in the window title"; ObjectID = "ZCH-00-Duo"; */
+"ZCH-00-Duo.title" = "This will make Finder display the full posix path in the window title";
+
+/* Class = "NSTextFieldCell"; title = "unknown"; ObjectID = "ck3-G4-VgP"; */
+"ck3-G4-VgP.title" = "unknown";
+
+/* Class = "NSTextFieldCell"; title = "Custom delay time for hiding Dock"; ObjectID = "di6-HL-lpS"; */
+"di6-HL-lpS.title" = "Custom delay time for hiding Dock";
+
+/* Class = "NSTextFieldCell"; title = "unknown"; ObjectID = "el6-YR-DhL"; */
+"el6-YR-DhL.title" = "unknown";
+
+/* Class = "NSTextFieldCell"; title = "unknown"; ObjectID = "fTB-Rz-7Kw"; */
+"fTB-Rz-7Kw.title" = "unknown";
+
+/* Class = "NSTextFieldCell"; title = "Specify the animation speed of the hiding Dock"; ObjectID = "fZQ-LB-To0"; */
+"fZQ-LB-To0.title" = "Specify the animation speed of the hiding Dock";
+
+/* Class = "NSTextFieldCell"; title = "Serial Number"; ObjectID = "g3w-OL-n67"; */
+"g3w-OL-n67.title" = "Serial Number";
+
+/* Class = "NSTextFieldCell"; title = "Add \"Recent Applications\" stack to Dock"; ObjectID = "hb1-7a-qE4"; */
+"hb1-7a-qE4.title" = "Add \"Recent Applications\" stack to Dock";
+
+/* Class = "NSTextFieldCell"; title = "System Version"; ObjectID = "iJ0-Xd-xZI"; */
+"iJ0-Xd-xZI.title" = "System Version";
+
+/* Class = "NSTextFieldCell"; title = "Processor (CPU)"; ObjectID = "jP0-PO-92l"; */
+"jP0-PO-92l.title" = "Processor (CPU)";
+
+/* Class = "NSTextFieldCell"; title = "Add blank space to Dock"; ObjectID = "kcD-ux-x09"; */
+"kcD-ux-x09.title" = "Add blank space to Dock";
+
+/* Class = "NSTextFieldCell"; title = "Kernel Version"; ObjectID = "l7M-d2-Nkf"; */
+"l7M-d2-Nkf.title" = "Kernel Version";
+
+/* Class = "NSTextFieldCell"; title = "This will add a space tile to the Dock, you can even add multiple space tiles"; ObjectID = "lGm-rc-IaR"; */
+"lGm-rc-IaR.title" = "This will add a space tile to the Dock, you can even add multiple space tiles";
+
+/* Class = "NSTextFieldCell"; title = "Hard Drive Available"; ObjectID = "m1v-aQ-Byz"; */
+"m1v-aQ-Byz.title" = "Hard Drive Available";
+
+/* Class = "NSButtonCell"; title = "Reset"; ObjectID = "njv-u0-XhT"; */
+"njv-u0-XhT.title" = "Reset";
+
+/* Class = "NSTextFieldCell"; title = "Hardware Model"; ObjectID = "nuj-ig-ryb"; */
+"nuj-ig-ryb.title" = "Hardware Model";
+
+/* Class = "NSTextFieldCell"; title = "Display Resolution"; ObjectID = "opA-3x-k5t"; */
+"opA-3x-k5t.title" = "Display Resolution";
+
+/* Class = "NSTextFieldCell"; title = "Network MAC address en0"; ObjectID = "qmg-wL-CQ7"; */
+"qmg-wL-CQ7.title" = "Network MAC address en0";
+
+/* Class = "NSButtonCell"; title = "Add"; ObjectID = "shP-Zo-J4d"; */
+"shP-Zo-J4d.title" = "Add";
+
+/* Class = "NSTextFieldCell"; title = "Show full path in title"; ObjectID = "sx7-SN-KpN"; */
+"sx7-SN-KpN.title" = "Show full path in title";
+
+/* Class = "NSTextFieldCell"; title = "unknown"; ObjectID = "v4f-kT-UfD"; */
+"v4f-kT-UfD.title" = "unknown";
+
+/* Class = "NSTextFieldCell"; title = "unknown"; ObjectID = "v7e-N6-nKn"; */
+"v7e-N6-nKn.title" = "unknown";
+
+/* Class = "NSTextFieldCell"; title = "unknown"; ObjectID = "w6f-XI-vyy"; */
+"w6f-XI-vyy.title" = "unknown";
+
+/* Class = "NSTextFieldCell"; title = "When enabled, only the window of the currently selected app will be displayed "; ObjectID = "wcP-gj-2Rt"; */
+"wcP-gj-2Rt.title" = "When enabled, only the window of the currently selected app will be displayed ";
+
+/* Class = "NSTextFieldCell"; title = "unknown"; ObjectID = "wn9-yj-E0A"; */
+"wn9-yj-E0A.title" = "unknown";
+
+/* Class = "NSTextFieldCell"; title = "Processor (Cores)"; ObjectID = "xQc-db-eMJ"; */
+"xQc-db-eMJ.title" = "Processor (Cores)";
+
+/* Class = "NSTextFieldCell"; title = "unknown"; ObjectID = "xjH-wA-1Wv"; */
+"xjH-wA-1Wv.title" = "unknown";
+
+/* Class = "NSTextFieldCell"; title = "unknown"; ObjectID = "xnG-gu-Oz1"; */
+"xnG-gu-Oz1.title" = "unknown";
+
+/* Class = "NSTextFieldCell"; title = "Memory (Type)"; ObjectID = "z6i-1J-JCi"; */
+"z6i-1J-JCi.title" = "Memory (Type)";
+
+/* Class = "NSTextFieldCell"; title = "Memory (Speed)"; ObjectID = "zIH-HQ-bna"; */
+"zIH-HQ-bna.title" = "Memory (Speed)";
