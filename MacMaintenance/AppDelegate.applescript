@@ -305,15 +305,15 @@ script AppDelegate
             hwinfoFilesystemSize's setStringValue_(tmphwinfoFilesystemSize&" GB")
         end try
         try
-            set tmphwinfoFilesystemUsed to do shell script "df -g / | tail -n 1 | awk '{ print $3 }' | xargs"
-            hwinfoFilesystemUsed's setStringValue_(tmphwinfoFilesystemUsed&" GB")
-        end try
-        try
             set tmphwinfoFilesystemAvailable to do shell script "df -g / | tail -n 1 | awk '{ print $4 }' | xargs"
             hwinfoFilesystemAvailable's setStringValue_(tmphwinfoFilesystemAvailable&" GB")
         end try
         try
-            set tmphwinfoFilesystemUsedPercent to do shell script "df -g / | tail -n 1 | awk '{ print $5 }' | egrep -o \"[[:digit:]]+\""
+            set tmphwinfoFilesystemUsed to tmphwinfoFilesystemSize - tmphwinfoFilesystemAvailable
+            hwinfoFilesystemUsed's setStringValue_(""&tmphwinfoFilesystemUsed&" GB")
+        end try
+        try
+            set tmphwinfoFilesystemUsedPercent to round(100/tmphwinfoFilesystemSize * tmphwinfoFilesystemUsed)
             hwinfoFilesystemUsedPercent's setStringValue_(tmphwinfoFilesystemUsedPercent)
             hwinfoFilesystemUsedPercentText's setStringValue_(""&tmphwinfoFilesystemUsedPercent&"%")
         end try
