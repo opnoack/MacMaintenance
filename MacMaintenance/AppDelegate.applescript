@@ -24,7 +24,6 @@ script AppDelegate
     property mainWindow : missing value
     property hwinfoHardwareModel: missing value
     property hwinfoSerialNumber: missing value
-    property buttonHideSerialNumber : missing value
     property tmphwinfoSerialNumber : missing value
     property hwinfoSystemVersion : missing value
     property hwinfoKernelVersion : missing value
@@ -51,7 +50,6 @@ script AppDelegate
     property BatteryFullChargeCapacityPercentage : missing value
     property BatteryCycleCount : missing value
     property BatteryCondition : missing value
-    property BatteryCurrentDischarge : missing value
     property BatteryIsCharging : missing value
     property BatterySerialNumber : missing value
         
@@ -355,14 +353,6 @@ script AppDelegate
             set currentBatteryCondition to do shell script "system_profiler SPPowerDataType | egrep \"Condition:\" | cut -f2 -d: | xargs"
             BatteryCondition's setStringValue_(currentBatteryCondition)
         end try
-        -- Get the current battery discharge wattage
-        try
-            set tmpBatteryCurrentVoltage to do shell script "system_profiler SPPowerDataType | egrep \"Voltage \\(mV\\):\" | cut -f2 -d: | xargs"
-            set tmpBatteryCurrentAmperage to do shell script "system_profiler SPPowerDataType | egrep \"Amperage \\(mA\\):\" | cut -f2 -d: | xargs"
-            set tmpBatteryCurrentDischarge to (tmpBatteryCurrentVoltage * tmpBatteryCurrentAmperage) * 10^-6 * -1
-            set tmpBatteryCurrentDischarge to do shell script "echo "&tmpBatteryCurrentDischarge&" | egrep -o \"[[:digit:]]+\\.[[:digit:]]{2}\""
-            BatteryCurrentDischarge's setStringValue_(tmpBatteryCurrentDischarge)
-        end try
         -- Check if the battery is currently charging
         try
             set tmpBatteryIsCharging to do shell script "ioreg -l -w0 | egrep '\"IsCharging\" = ' | cut -f2 -d= | xargs"
@@ -556,6 +546,20 @@ script AppDelegate
             do shell script "defaults delete com.apple.dock autohide-time-modifier && killall Dock"
         end try
     end DockResetAnimationSpeed_
+    
+    -- Reset Launchpad layout to defaults
+    on DockResetLaunchpadLayout_(sender)
+        try
+            do shell script "defaults write com.apple.dock ResetLaunchPad 1 && killall Dock"
+        end try
+    end DockResetLaunchpadLayout_
+    
+    -- Reset Dock to defaults
+    on ResetDock_(sender)
+        try
+            do shell script "defaults delete com.apple.dock && killall Dock"
+        end try
+    end ResetDock_
 
     -- ######################## CACHES ########################
     
@@ -692,6 +696,18 @@ script AppDelegate
             end try
         end if
     end Enablephp7Apache2_
+    
+    -- ######################## HELP MENU ########################
+   
+   -- Report Issue via GitHub
+    on ReportIssue_(sender)
+        do shell script "open https://github.com/opnoack/MacMaintenance/issues"
+    end ReportIssue_
+    
+    -- Check for Updates via GitHub
+     on CheckForUpdates_(sender)
+         do shell script "open https://github.com/opnoack/MacMaintenance/releases"
+     end CheckForUpdates_
         
     on applicationShouldTerminateAfterLastWindowClosed_(sender)
         return true
