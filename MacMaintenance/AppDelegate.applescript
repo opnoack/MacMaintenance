@@ -230,7 +230,7 @@ script AppDelegate
     
         -- Check how much space is used by the Cache folders
         set SizeOfCachesinMB to do shell script "du -scm /Library/Caches/ ~/Library/Caches/ /System/Library/Caches/ | grep total | cut -f 1"
-        SizeOfCaches's setStringValue_("("&SizeOfCachesinMB&" MB)")
+        SizeOfCaches's setStringValue_("(over "&SizeOfCachesinMB&" MB)")
 	end applicationWillFinishLaunching_
 
     -- MacMaintenance BEGIN
@@ -249,7 +249,7 @@ script AppDelegate
     on selectTabCaches_(sender)
         tabView's selectTabViewItem_(tabCaches)
         set SizeOfCachesinMB to do shell script "du -scm /Library/Caches/ ~/Library/Caches/ /System/Library/Caches/ | grep total | cut -f 1"
-        SizeOfCaches's setStringValue_("("&SizeOfCachesinMB&" MB)")
+        SizeOfCaches's setStringValue_("(over "&SizeOfCachesinMB&" MB)")
     end selectTabCaches_
 
     on selectTabSystem_(sender)
@@ -455,6 +455,38 @@ script AppDelegate
             end try
         end if
     end FinderShowFullPath_
+    
+    -- Finder: Change Screenshot Format
+    on FinderChangeScreenshotFormatPNG_(sender)
+        try
+            do shell script "defaults write com.apple.screencapture type -string 'png'"
+        end try
+    end FinderChangeScreenshotFormatPNG_
+    on FinderChangeScreenshotFormatBMP_(sender)
+        try
+            do shell script "defaults write com.apple.screencapture type -string 'bmp'"
+        end try
+    end FinderChangeScreenshotFormatBMP_
+    on FinderChangeScreenshotFormatGIF_(sender)
+        try
+            do shell script "defaults write com.apple.screencapture type -string 'gif'"
+        end try
+    end FinderChangeScreenshotFormatGIF_
+    on FinderChangeScreenshotFormatJPG_(sender)
+        try
+            do shell script "defaults write com.apple.screencapture type -string 'jpg'"
+        end try
+    end FinderChangeScreenshotFormatJPG_
+    on FinderChangeScreenshotFormatPDF_(sender)
+        try
+            do shell script "defaults write com.apple.screencapture type -string 'pdf'"
+        end try
+    end FinderChangeScreenshotFormatPDF_
+    on FinderChangeScreenshotFormatTIFF_(sender)
+        try
+            do shell script "defaults write com.apple.screencapture type -string 'tiff'"
+        end try
+    end FinderChangeScreenshotFormatTIFF_
 
     -- ######################## DOCK ########################
     
@@ -488,9 +520,14 @@ script AppDelegate
     -- Add a blank space to the Dock
     on DockAddBlankSpace_(sender)
         try
-            do shell script "defaults write com.apple.Dock persistent-apps -array-add '{\"tile-type\"=\"spacer-tile\";}' && sleep 0.3 && killall Dock"
+            do shell script "defaults write com.apple.Dock persistent-apps -array-add '{\"tile-type\"=\"spacer-tile\";}' && sleep 0.75 && killall Dock"
         end try
     end DockAddBlankSpace_
+    on DockAddSmallBlankSpace_(sender)
+        try
+            do shell script "defaults write com.apple.dock persistent-apps -array-add '{\"tile-type\"=\"small-spacer-tile\";}' && sleep 0.75 && killall Dock"
+        end try
+    end DockAddSmallBlankSpace_
         
     -- Enable single application mode
     on DockSingleAppMode_(sender)
@@ -566,12 +603,10 @@ script AppDelegate
     -- Delete caches
     on DeleteCaches_(sender)
         try
-            do shell script "rm -rf /Library/Caches/*" with administrator privileges
-            do shell script "rm -rf ~/Library/Caches/*" with administrator privileges
-            do shell script "rm -rf /System/Library/Caches/*" with administrator privileges
+            do shell script "rm -rf /Library/Caches/* ~/Library/Caches/* /System/Library/Caches/*" with administrator privileges
         end try
         set SizeOfCachesinMB to do shell script "du -scm /Library/Caches/ ~/Library/Caches/ /System/Library/Caches/ | grep total | cut -f 1"
-        SizeOfCaches's setStringValue_("("&SizeOfCachesinMB&" MB)")
+        SizeOfCaches's setStringValue_("(over "&SizeOfCachesinMB&" MB)")
     end DeleteCaches_
     
     -- Delete DNS cache
@@ -622,11 +657,7 @@ script AppDelegate
     -- Open printing web interface
     on CUPSconfigadmin_(sender)
         do shell script "if [ `cupsctl | grep WebInterface` != 'WebInterface=yes' ]; then cupsctl WebInterface=yes; fi"
-        do shell script ""
-        tell application "Safari"
-            activate
-            open location "http://127.0.0.1:631"
-        end tell
+        do shell script "open http://127.0.0.1:631"
     end CUPSconfigadmin_
         
     -- Reset LaunchDB (Open with...)

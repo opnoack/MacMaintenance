@@ -343,7 +343,7 @@
 				GCC_PREFIX_HEADER = "MacMaintenance/MacMaintenance-Prefix.pch";
 				INFOPLIST_FILE = "MacMaintenance/MacMaintenance-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 7.0.2;
+				MARKETING_VERSION = 7.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.oliverphilippnoack.MacMaintenance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -365,7 +365,7 @@
 				GCC_PREFIX_HEADER = "MacMaintenance/MacMaintenance-Prefix.pch";
 				INFOPLIST_FILE = "MacMaintenance/MacMaintenance-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 7.0.2;
+				MARKETING_VERSION = 7.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.oliverphilippnoack.MacMaintenance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
