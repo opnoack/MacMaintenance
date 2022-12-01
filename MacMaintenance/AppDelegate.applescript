@@ -31,7 +31,6 @@ script AppDelegate
     property hwinfoCPUCores : missing value
     property hwinfoCPUThreads : missing value
     property hwinfoMemType : missing value
-    property hwinfoMemSpeed : missing value
     property hwinfoMemSize : missing value
     property hwinfoGPUIntegratedName : missing value
     property hwinfoGPUDedicatedName : missing value
@@ -48,6 +47,7 @@ script AppDelegate
     property BatteryCurrentChargePercentage : missing value
     property BatteryFullChargeCapacity : missing value
     property BatteryFullChargeCapacityPercentage : missing value
+    property BatteryDesignCapacity : missing value
     property BatteryCycleCount : missing value
     property BatteryCondition : missing value
     property BatteryIsCharging : missing value
@@ -57,13 +57,11 @@ script AppDelegate
     property settingFinderHiddenFiles : missing value
     property settingFinderLibraryFolder : missing value
     property settingTrashWarning : missing value
-    property settingEnhancedSaveAsDialog : missing value
     property settingScreenshotShadows : missing value
     property settingScreenshotThumbnails : missing value
     property settingTransparentDockApps : missing value
     property settingDockSizePixel : 0
     property settingInitialSetup : missing value
-    property settingphp7builtinWebserver : missing value
     property settingEnableApache2Webserver : missing value
     property settingFinderShowFullPath : missing value
     property settingDockSingleAppMode : missing value
@@ -75,12 +73,10 @@ script AppDelegate
     property checkBoxFinderHiddenFiles : missing value
     property checkBoxFinderLibraryFolder : missing value
     property checkBoxTrashWarning : missing value
-    property checkBoxEnhancedSaveAsDialog : missing value
     property checkBoxScreenshotShadows : missing value
     property checkBoxScreenshotThumbnails : missing value
     property checkBoxTransparentDockApps : missing value
     property checkBoxInitialSetup : missing value
-    property checkBoxphp7builtinWebserver : missing value
     property checkBoxEnableApache2Webserver : missing value
     property checkBoxFinderShowFullPath : missing value
     property checkBoxDockSingleAppMode : missing value
@@ -123,16 +119,6 @@ script AppDelegate
             set settingTrashWarning to "1"
             checkBoxTrashWarning's setState_(1)
         end if
-        -- Enhanced Save-as Dialog
-        try
-            set settingEnhancedSaveAsDialog to (do shell script "defaults read -g NSNavPanelExpandedStateForSaveMode")
-        end try
-        if settingEnhancedSaveAsDialog is "1" then
-            checkBoxEnhancedSaveAsDialog's setState_(1)
-        else
-            set settingEnhancedSaveAsDialog to "0"
-            checkBoxEnhancedSaveAsDialog's setState_(0)
-        end if
         -- Screenshots without shadows
         try
             set settingScreenshotShadows to (do shell script "defaults read com.apple.screencapture disable-shadow")
@@ -165,7 +151,7 @@ script AppDelegate
         end if
         -- Transparent app icon for hidden apps (CMD+H)
         try
-            set settingTransparentDockApps to (do shell script "defaults read com.apple.Dock showhidden")
+            set settingTransparentDockApps to (do shell script "defaults read com.apple.dock showhidden")
         end try
         if settingTransparentDockApps is "1" then
             checkBoxTransparentDockApps's setState_(1)
@@ -212,15 +198,6 @@ script AppDelegate
             checkBoxEnableApache2Webserver's setState_(1)
             else
             checkBoxEnableApache2Webserver's setState_(0)
-        end if
-        -- Built-in php7 server
-        try
-            set settingphp7builtinWebserver to (do shell script "cat /etc/apache2/httpd.conf |grep libphp7.so|colrm 2")
-        end try
-        if settingphp7builtinWebserver is "L" then
-            checkBoxphp7builtinWebserver's setState_(1)
-        else if settingphp7builtinWebserver is "#" then
-            checkBoxphp7builtinWebserver's setState_(0)
         end if
 
         -- ######################################
@@ -275,16 +252,13 @@ script AppDelegate
             hwinfoCPUDetails's setStringValue_(do shell script "sysctl -n machdep.cpu.brand_string")
         end try
         try
-            hwinfoCPUCores's setStringValue_(do shell script "sysctl -a machdep.cpu.core_count | cut -f2 -d: | xargs")
+            hwinfoCPUCores's setStringValue_(do shell script "system_profiler SPHardwareDataType | egrep \"Total Number of Cores:\" | cut -f2 -d: | xargs")
         end try
         try
             hwinfoCPUThreads's setStringValue_(do shell script "sysctl -a machdep.cpu.thread_count | cut -f2 -d: | xargs")
         end try
         try
             hwinfoMemType's setStringValue_(do shell script "system_profiler SPMemoryDataType | egrep \"Type:\" | cut -f2 -d: | tail -n 1 | xargs")
-        end try
-        try
-            hwinfoMemSpeed's setStringValue_(do shell script "system_profiler SPMemoryDataType | egrep \"Speed:\" | cut -f2 -d: | tail -n 1 | xargs")
         end try
         try
             hwinfoMemSize's setStringValue_(do shell script "echo \"$(sysctl hw.memsize|cut -f2 -d:)/1024/1024/1024\" | bc")
@@ -327,20 +301,13 @@ script AppDelegate
         -- Get battery information
         -- Get full charge capacity and design capacity and calculate percentage
         try
-            set tmpBatteryFullChargeCapacity to do shell script "ioreg -l -w0 | grep LegacyBatteryInfo | egrep -o '\"Capacity\"=[[:digit:]]+' | egrep -o '[[:digit:]]+'"
-            set tmpBatteryDesignCapacity to do shell script "ioreg -l -w0 | egrep -o '\"DesignCapacity\"=[[:digit:]]+' | egrep -o '[[:digit:]]+'"
+            set tmpBatteryFullChargeCapacity to do shell script "ioreg -w 0 -f -r -c AppleSmartBattery | egrep -o '\"AppleRawMaxCapacity\" = [[:digit:]]+' | egrep -o '[[:digit:]]+'"
+            set tmpBatteryDesignCapacity to do shell script "ioreg -w 0 -f -r -c AppleSmartBattery | egrep -o '\"DesignCapacity\" = [[:digit:]]+' | egrep -o '[[:digit:]]+'"
             set tmpBatteryFullChargeCapacityPercentage to round(tmpBatteryFullChargeCapacity / tmpBatteryDesignCapacity * 100)
             
-            BatteryFullChargeCapacity's setStringValue_(tmpBatteryFullChargeCapacity&" ("&tmpBatteryFullChargeCapacityPercentage&"%)")
+            BatteryFullChargeCapacity's setStringValue_(""&tmpBatteryFullChargeCapacityPercentage&"% ("&tmpBatteryFullChargeCapacity&")")
             BatteryFullChargeCapacityPercentage's setStringValue_(tmpBatteryFullChargeCapacityPercentage)
-        end try
-        -- Get current and full charge capacity and calculate percentage
-        try
-            set tmpBatteryCurrentCharge to do shell script "ioreg -l -w0 | grep LegacyBatteryInfo | egrep -o '\"Current\"=[[:digit:]]+' | egrep -o '[[:digit:]]+'"
-            set tmpBatteryCurrentChargePercentage to round(tmpBatteryCurrentCharge / tmpBatteryFullChargeCapacity * 100)
-            
-            BatteryCurrentCharge's setStringValue_(tmpBatteryCurrentCharge&" ("&tmpBatteryCurrentChargePercentage&"%)")
-            BatteryCurrentChargePercentage's setStringValue_(tmpBatteryCurrentChargePercentage)
+            BatteryDesignCapacity's setStringValue_(tmpBatteryDesignCapacity)
         end try
         -- Get the current cycle count
         try
@@ -355,7 +322,7 @@ script AppDelegate
         end try
         -- Check if the battery is currently charging
         try
-            set tmpBatteryIsCharging to do shell script "ioreg -l -w0 | egrep '\"IsCharging\" = ' | cut -f2 -d= | xargs"
+            set tmpBatteryIsCharging to do shell script "ioreg -w 0 -f -r -c AppleSmartBattery | egrep '\"IsCharging\" = ' | cut -f2 -d= | xargs"
             BatteryIsCharging's setStringValue_(tmpBatteryIsCharging)
         end try
         -- Get the battery serial number
@@ -381,10 +348,10 @@ script AppDelegate
     -- Show user's Library folder
     on FinderLibraryFolder_(sender)
         if settingFinderLibraryFolder contains "hidden" then
-            do shell script "chflags nohidden ~/Library && xattr -d com.apple.FinderInfo ~/Library"
+            do shell script "chflags nohidden ~/Library"
             set settingFinderLibraryFolder to ""
         else
-            do shell script "chflags hidden ~/Library && xattr -wx com.apple.FinderInfo '0000000000000000400000000000000000000000000000000000000000000000'"
+            do shell script "chflags hidden ~/Library"
             set settingFinderLibraryFolder to "hidden"
         end if
     end FinderLibraryFolder_
@@ -399,18 +366,7 @@ script AppDelegate
             set settingTrashWarning to "1"
         end if
     end WarningEmpytingTrash_
-    
-    -- Enhanced Save-as dialog
-    on EnhancedSaveAsDialog_(sender)
-        if settingEnhancedSaveAsDialog is "1" then
-            do shell script "defaults write -g NSNavPanelExpandedStateForSaveMode -int 0 && killall Finder"
-            set settingEnhancedSaveAsDialog to "0"
-        else
-            do shell script "defaults write -g NSNavPanelExpandedStateForSaveMode -int 1 && killall Finder"
-            set settingEnhancedSaveAsDialog to "1"
-        end if
-    end EnhancedSaveAsDialog_
-    
+        
     -- Screenshots without shadows
     on ScreenshotsWithoutShadows_(sender)
         if settingScreenshotShadows is "1" then
@@ -493,10 +449,10 @@ script AppDelegate
     -- Transparent icons for hidden apps (CMD+H)
     on TransparentHiddenApps_(sender)
         if settingTransparentDockApps is "1" then
-            do shell script "defaults write com.apple.Dock showhidden -int 0 && killall Dock"
+            do shell script "defaults write com.apple.dock showhidden -int 0 && killall Dock"
             set settingTransparentDockApps to "0"
         else
-            do shell script "defaults write com.apple.Dock showhidden -int 1 && killall Dock"
+            do shell script "defaults write com.apple.dock showhidden -int 1 && killall Dock"
             set settingTransparentDockApps to "1"
         end if
     end TransparentHiddenApps_
@@ -520,14 +476,19 @@ script AppDelegate
     -- Add a blank space to the Dock
     on DockAddBlankSpace_(sender)
         try
-            do shell script "defaults write com.apple.Dock persistent-apps -array-add '{\"tile-type\"=\"spacer-tile\";}' && sleep 0.75 && killall Dock"
+            do shell script "defaults write com.apple.dock persistent-apps -array-add '{\"tile-type\"=\"spacer-tile\";}' && sleep 3 && killall Dock"
         end try
     end DockAddBlankSpace_
     on DockAddSmallBlankSpace_(sender)
         try
-            do shell script "defaults write com.apple.dock persistent-apps -array-add '{\"tile-type\"=\"small-spacer-tile\";}' && sleep 0.75 && killall Dock"
+            do shell script "defaults write com.apple.dock persistent-apps -array-add '{\"tile-type\"=\"small-spacer-tile\";}' && sleep 3 && killall Dock"
         end try
     end DockAddSmallBlankSpace_
+    on DockAddFlexBlankSpace_(sender)
+        try
+            do shell script "defaults write com.apple.dock persistent-apps -array-add '{\"tile-type\"=\"flex-spacer-tile\";}' && sleep 3 && killall Dock"
+        end try
+    end DockAddFlexBlankSpace_
         
     -- Enable single application mode
     on DockSingleAppMode_(sender)
@@ -618,7 +579,7 @@ script AppDelegate
     
     -- Purge inactive memory
     on PurgeMemory_(sender)
-                try
+        try
             do shell script "purge" with administrator privileges
         end try
     end PurgeMemory_
@@ -656,8 +617,8 @@ script AppDelegate
     
     -- Open printing web interface
     on CUPSconfigadmin_(sender)
-        do shell script "if [ `cupsctl | grep WebInterface` != 'WebInterface=yes' ]; then cupsctl WebInterface=yes; fi"
-        do shell script "open http://127.0.0.1:631"
+        do shell script "if [ `cupsctl | grep WebInterface` != 'WebInterface=yes' ]; then cupsctl WebInterface=yes; fi; sleep 3"
+        do shell script "open http://localhost:631"
     end CUPSconfigadmin_
         
     -- Reset LaunchDB (Open with...)
@@ -702,32 +663,7 @@ script AppDelegate
             end try
         end if
     end StartApache2Webserver_
-
-    -- Enable built-in php7 module
-    on Enablephp7Apache2_(sender)
-        if settingphp7builtinWebserver is "#" then
-            try
-                do shell script "mv /etc/apache2/httpd.conf /etc/apache2/httpd.conf.tmp && cat /etc/apache2/httpd.conf.tmp | sed -e 's/#LoadModule php7_module/LoadModule php7_module/' > /etc/apache2/httpd.conf && rm /etc/apache2/httpd.conf.tmp" with administrator privileges
-                set settingphp7builtinWebserver to "L"
-                if settingEnableApache2Webserver is "1" then
-                    do shell script "apachectl restart" with administrator privileges
-                end if
-            on error
-                checkBoxphp7builtinWebserver's setState_(0)
-            end try
-        else if settingphp7builtinWebserver is "L" then
-            try
-                do shell script "mv /etc/apache2/httpd.conf /etc/apache2/httpd.conf.tmp && cat /etc/apache2/httpd.conf.tmp | sed -e 's/LoadModule php7_module/#LoadModule php7_module/' > /etc/apache2/httpd.conf && rm /etc/apache2/httpd.conf.tmp" with administrator privileges
-                set settingphp7builtinWebserver to "#"
-                if settingEnableApache2Webserver is "1" then
-                    do shell script "apachectl restart" with administrator privileges
-                end if
-            on error
-                checkBoxphp7builtinWebserver's setState_(1)
-            end try
-        end if
-    end Enablephp7Apache2_
-    
+  
     -- ######################## HELP MENU ########################
    
    -- Report Issue via GitHub
