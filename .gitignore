@@ -28,6 +28,3 @@ DerivedData/
 
 ## Gcc Patch
 /*.gcno
-
-# Custom
-Archive
