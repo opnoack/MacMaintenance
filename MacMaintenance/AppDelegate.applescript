@@ -89,6 +89,12 @@ script AppDelegate
         -- Highlight Finder toolbar object
         toolbar's setSelectedItemIdentifier_("toolbarFinder")
         
+        -- Get the macOS version (e.g. 13.0.1)
+        set productVersion to (do shell script "sw_vers -productVersion")
+        if productVersion doesn't start with "13"
+            display alert (localized string "CompatibilityWarning") buttons {"Acknowledge"}
+        end if
+        
         -- Check the momentary state of the settings
         -- Finder: Hidden files
         try
@@ -201,9 +207,6 @@ script AppDelegate
         end if
 
         -- ######################################
-        
-        -- Get the macOS version (e.g. 11.0)
-        set productVersion to (do shell script "sw_vers -productVersion")
     
         -- Check how much space is used by the Cache folders
         set SizeOfCachesinMB to do shell script "du -scm /Library/Caches/ ~/Library/Caches/ /System/Library/Caches/ | grep total | cut -f 1"
