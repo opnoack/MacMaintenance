@@ -463,7 +463,7 @@ script AppDelegate
     on EncryptFile_(sender)
         try
             set fileToEncrypt to POSIX path of (choose file with prompt "Select file to encrypt with a password:")
-            set filePassword to text returned of (display dialog "Please enter the desired password" default answer "" with hidden answer)
+            set filePassword to text returned of (display dialog "Please enter the desired password (please avoid the special character ' as it will cause an error):" default answer "" with hidden answer)
             do shell script "zip --junk-paths --password '" & filePassword & "' '" & fileToEncrypt & ".zip' '" & fileToEncrypt & "' 2>/dev/null"
         end try
     end EncryptFile_
@@ -471,8 +471,12 @@ script AppDelegate
         try
             set folderToEncrypt to POSIX path of (choose folder with prompt "Select folder to encrypt with a password:")
             set folderToEncrypt to (do shell script "echo " & folderToEncrypt & " | rev | cut -f2- -d/ | rev")
-            set folderPassword to text returned of (display dialog "Please enter the desired password" default answer "" with hidden answer)
-            do shell script "zip -r --junk-paths --password '" & folderPassword & "' '" & folderToEncrypt & ".zip' '" & folderToEncrypt & "' 2>/dev/null"
+            set folderPassword to text returned of (display dialog "Please enter the desired password (please avoid the special character ' as it will cause an error):" default answer "" with hidden answer)
+            try
+                do shell script "zip -r --junk-paths --password '" & folderPassword & "' '" & folderToEncrypt & ".zip' '" & folderToEncrypt & "'"
+            on error
+                display alert "An unknown error occurred"
+            end try
         end try
     end EncryptFolder_
 
