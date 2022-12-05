@@ -68,6 +68,7 @@ script AppDelegate
     property settingDockAutoHideDelay : 0
     property settingDockAnimationSpeed : 0
     property settingMediumTypeExitCode : missing value
+    property settingPresentationMode : missing value
     
     -- Checkboxes
     property checkBoxFinderHiddenFiles : missing value
@@ -80,6 +81,7 @@ script AppDelegate
     property checkBoxEnableApache2Webserver : missing value
     property checkBoxFinderShowFullPath : missing value
     property checkBoxDockSingleAppMode : missing value
+    property checkBoxPresentationMode : missing value
 	
 	on applicationWillFinishLaunching_(aNotification)
 		-- Insert code here to initialize your application before any files are opened
@@ -202,9 +204,19 @@ script AppDelegate
         end try
         if (settingEnableApache2Webserver is greater than "0") then
             checkBoxEnableApache2Webserver's setState_(1)
-            else
+        else
             checkBoxEnableApache2Webserver's setState_(0)
         end if
+        -- Check if presentation mode is running
+        try
+            set settingPresentationMode to do shell script "ps aux|grep '[c]affeinate'|wc -l|xargs"
+        end try
+        if (settingPresentationMode is greater than "0") then
+            checkBoxPresentationMode's setState_(1)
+        else
+            checkBoxPresentationMode's setState_(0)
+        end if
+            
 
         -- ######################################
     
@@ -276,11 +288,11 @@ script AppDelegate
             hwinfoDisplayResolution's setStringValue_(do shell script "system_profiler SPDisplaysDataType | egrep \"Resolution: \" | head -n 1 | cut -f2 -d: | xargs")
         end try
         try
-            set tmphwinfoFilesystemSize to do shell script "df -g / | tail -n 1 | awk '{ print $2 }' | xargs"
+            set tmphwinfoFilesystemSize to do shell script "df -gH / | tail -n 1 | awk '{ print $2 }' | cut -f1 -dG | xargs"
             hwinfoFilesystemSize's setStringValue_(tmphwinfoFilesystemSize&" GB")
         end try
         try
-            set tmphwinfoFilesystemAvailable to do shell script "df -g / | tail -n 1 | awk '{ print $4 }' | xargs"
+            set tmphwinfoFilesystemAvailable to do shell script "df -gH / | tail -n 1 | awk '{ print $4 }' | cut -f1 -dG | xargs"
             hwinfoFilesystemAvailable's setStringValue_(tmphwinfoFilesystemAvailable&" GB")
         end try
         try
@@ -446,6 +458,23 @@ script AppDelegate
             do shell script "defaults write com.apple.screencapture type -string 'tiff'"
         end try
     end FinderChangeScreenshotFormatTIFF_
+    
+    -- Password-protect and compress file or folder
+    on EncryptFile_(sender)
+        try
+            set fileToEncrypt to POSIX path of (choose file with prompt "Select file to encrypt with a password:")
+            set filePassword to text returned of (display dialog "Please enter the desired password" default answer "" with hidden answer)
+            do shell script "zip --junk-paths --password '" & filePassword & "' '" & fileToEncrypt & ".zip' '" & fileToEncrypt & "' 2>/dev/null"
+        end try
+    end EncryptFile_
+    on EncryptFolder_(sender)
+        try
+            set folderToEncrypt to POSIX path of (choose folder with prompt "Select folder to encrypt with a password:")
+            set folderToEncrypt to (do shell script "echo " & folderToEncrypt & " | rev | cut -f2- -d/ | rev")
+            set folderPassword to text returned of (display dialog "Please enter the desired password" default answer "" with hidden answer)
+            do shell script "zip -r --junk-paths --password '" & folderPassword & "' '" & folderToEncrypt & ".zip' '" & folderToEncrypt & "' 2>/dev/null"
+        end try
+    end EncryptFolder_
 
     -- ######################## DOCK ########################
     
@@ -604,6 +633,30 @@ script AppDelegate
     
     -- ######################## SYSTEM ########################
 
+    -- Start presentation mode (prevent macOS from going into sleep mode)
+    on TogglePresentationMode_(sender)
+        if settingPresentationMode is "0" then
+            try
+                do shell script "killall caffeinate"
+            end try
+            try
+                do shell script "caffeinate -disu &>/dev/null &"
+                set settingPresentationMode to "1"
+                checkBoxPresentationMode's setState_(1)
+            on error
+                checkBoxPresentationMode's setState_(0)
+            end try
+        else
+            try
+                do shell script "killall caffeinate"
+                set settingPresentationMode to "0"
+                checkBoxPresentationMode's setState_(0)
+                on error
+                    checkBoxPresentationMode's setState_(1)
+            end try
+        end if
+    end TogglePresentationMode_
+        
     -- Run periodic scripts
     on RunPeriodicScripts_(sender)
         try
