@@ -458,6 +458,11 @@ script AppDelegate
             do shell script "defaults write com.apple.screencapture type -string 'tiff'"
         end try
     end FinderChangeScreenshotFormatTIFF_
+    on FinderChangeScreenshotFormatHEIF_(sender)
+        try
+            do shell script "defaults write com.apple.screencapture type -string 'heic'"
+        end try
+    end FinderChangeScreenshotFormatHEIF_
     
     -- Password-protect and compress file or folder
     on EncryptFile_(sender)
