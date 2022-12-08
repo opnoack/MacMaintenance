@@ -894,9 +894,9 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Nu-pJ-4di">
-                                            <rect key="frame" x="44" y="528" width="453" height="17"/>
+                                            <rect key="frame" x="44" y="528" width="612" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Prevent computer from going into sleep mode (enable presentation mode)" id="Md9-mo-jBC">
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Temporarily prevent computer from going into sleep mode automatically (enable presentation mode)" id="Md9-mo-jBC">
                                                 <font key="font" metaFont="system"/>
                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -923,8 +923,38 @@
                                                 <action selector="TogglePresentationMode:" target="494" id="wm3-Nz-XtF"/>
                                             </connections>
                                         </button>
-                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2293">
+                                        <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yq7-jI-3s9">
+                                            <rect key="frame" x="44" y="467" width="612" height="17"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Prevent computer from going into sleep mode when closing the lid" id="NmE-Di-fD7">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dKK-6s-SHW">
+                                            <rect key="frame" x="44" y="431" width="722" height="28"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="crh-bj-rBK">
+                                                <font key="font" metaFont="smallSystem"/>
+                                                <string key="title">When closing the lid on a portable Mac (MacBook/Air/Pro) it will no longer go into sleep mode. Be careful with this, as your computer could potentially overheat if you close the lid and put it into a backpack or sleeve.</string>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hLe-lm-RQB">
                                             <rect key="frame" x="18" y="466" width="22" height="18"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="overlaps" inset="2" id="h6a-4U-pds">
+                                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                <font key="font" metaFont="system"/>
+                                            </buttonCell>
+                                            <connections>
+                                                <action selector="ToggleLidSleep:" target="494" id="Tvw-6w-Suk"/>
+                                            </connections>
+                                        </button>
+                                        <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2293">
+                                            <rect key="frame" x="18" y="405" width="22" height="18"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="overlaps" inset="2" id="2294">
                                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
@@ -935,7 +965,7 @@
                                             </connections>
                                         </button>
                                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2289">
-                                            <rect key="frame" x="44" y="467" width="222" height="17"/>
+                                            <rect key="frame" x="44" y="406" width="222" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Activate built-in apache2 webserver" id="2290">
                                                 <font key="font" metaFont="system"/>
@@ -944,7 +974,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2291">
-                                            <rect key="frame" x="44" y="431" width="738" height="28"/>
+                                            <rect key="frame" x="44" y="370" width="738" height="28"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="2292">
                                                 <font key="font" metaFont="smallSystem"/>
@@ -954,7 +984,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="763">
-                                            <rect key="frame" x="44" y="406" width="317" height="17"/>
+                                            <rect key="frame" x="44" y="345" width="317" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Manually run built-in periodical maintenance scripts" id="764">
                                                 <font key="font" metaFont="system"/>
@@ -963,7 +993,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="770">
-                                            <rect key="frame" x="44" y="382" width="722" height="16"/>
+                                            <rect key="frame" x="44" y="321" width="722" height="16"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="This will trigger periodic scripts to be run (daily, weekly and monthly). These scripts usually clean up or rotate log files." id="771">
                                                 <font key="font" metaFont="smallSystem"/>
@@ -972,7 +1002,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="901">
-                                            <rect key="frame" x="44" y="317" width="188" height="17"/>
+                                            <rect key="frame" x="44" y="256" width="188" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Manage CUPS printing system" id="902">
                                                 <font key="font" metaFont="system"/>
@@ -981,7 +1011,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="905">
-                                            <rect key="frame" x="44" y="281" width="738" height="28"/>
+                                            <rect key="frame" x="44" y="220" width="738" height="28"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" id="906">
                                                 <font key="font" metaFont="smallSystem"/>
@@ -991,7 +1021,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1842">
-                                            <rect key="frame" x="44" y="216" width="257" height="17"/>
+                                            <rect key="frame" x="44" y="155" width="257" height="17"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Reset macOS to the initial setup assisant" id="1843">
                                                 <font key="font" metaFont="system"/>
@@ -1000,7 +1030,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1848">
-                                            <rect key="frame" x="44" y="194" width="722" height="14"/>
+                                            <rect key="frame" x="44" y="133" width="722" height="14"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="This will trigger the setup dialogue to be displayed again after rebooting." id="1849">
                                                 <font key="font" metaFont="smallSystem"/>
@@ -1009,7 +1039,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b1j-iK-5r3">
-                                            <rect key="frame" x="44" y="172" width="722" height="14"/>
+                                            <rect key="frame" x="44" y="111" width="722" height="14"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" title="WARNING: This process will not delete any user data, please make sure to delete sensitive data before selling your computer." id="1l5-nf-aS5">
                                                 <font key="font" metaFont="smallSystem"/>
@@ -1018,7 +1048,7 @@
                                             </textFieldCell>
                                         </textField>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="776">
-                                            <rect key="frame" x="39" y="347" width="58" height="32"/>
+                                            <rect key="frame" x="39" y="286" width="58" height="32"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="push" title="Run" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="777">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1029,7 +1059,7 @@
                                             </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="913">
-                                            <rect key="frame" x="39" y="246" width="122" height="32"/>
+                                            <rect key="frame" x="39" y="185" width="122" height="32"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="push" title="Open Settings" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="914">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1040,7 +1070,7 @@
                                             </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="909">
-                                            <rect key="frame" x="159" y="246" width="73" height="32"/>
+                                            <rect key="frame" x="159" y="185" width="73" height="32"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="push" title="Reset" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="910">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1051,7 +1081,7 @@
                                             </connections>
                                         </button>
                                         <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2243">
-                                            <rect key="frame" x="39" y="137" width="69" height="32"/>
+                                            <rect key="frame" x="39" y="76" width="69" height="32"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                             <buttonCell key="cell" type="push" title="Reset" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="2248">
                                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1635,6 +1665,7 @@
                 <outlet property="checkBoxFinderLibraryFolder" destination="2207" id="R5a-Se-Gi8"/>
                 <outlet property="checkBoxFinderShowFullPath" destination="95O-HJ-Tdj" id="03h-YZ-bmF"/>
                 <outlet property="checkBoxInitialSetup" destination="2243" id="2251"/>
+                <outlet property="checkBoxLidSleep" destination="hLe-lm-RQB" id="m69-1v-bXX"/>
                 <outlet property="checkBoxPresentationMode" destination="cHF-L6-Udr" id="Dv5-L4-h6T"/>
                 <outlet property="checkBoxScreenshotShadows" destination="2212" id="ens-nA-BXh"/>
                 <outlet property="checkBoxScreenshotThumbnails" destination="P8c-8r-bel" id="YoY-gu-b7N"/>

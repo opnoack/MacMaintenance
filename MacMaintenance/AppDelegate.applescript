@@ -69,6 +69,7 @@ script AppDelegate
     property settingDockAnimationSpeed : 0
     property settingMediumTypeExitCode : missing value
     property settingPresentationMode : missing value
+    property settingLidSleep : missing value
     
     -- Checkboxes
     property checkBoxFinderHiddenFiles : missing value
@@ -82,6 +83,7 @@ script AppDelegate
     property checkBoxFinderShowFullPath : missing value
     property checkBoxDockSingleAppMode : missing value
     property checkBoxPresentationMode : missing value
+    property checkBoxLidSleep : missing value
 	
 	on applicationWillFinishLaunching_(aNotification)
 		-- Insert code here to initialize your application before any files are opened
@@ -216,7 +218,16 @@ script AppDelegate
         else
             checkBoxPresentationMode's setState_(0)
         end if
-            
+        -- Check if lid sleep is enabled
+        try
+            set settingLidSleep to do shell script "pmset -g|grep SleepDisabled|awk '{ print $2 }'"
+        end try
+        -- settingLidSleep = SleepDisabled
+        if (settingLidSleep is greater than "0") then
+            checkBoxLidSleep's setState_(1)
+        else
+            checkBoxLidSleep's setState_(0)
+        end if
 
         -- ######################################
     
@@ -665,6 +676,23 @@ script AppDelegate
             end try
         end if
     end TogglePresentationMode_
+    
+    -- Prevent portable computer from sleeping when lid is closed
+    on ToggleLidSleep_(sender)
+        if settingLidSleep is "0" then
+            try
+                do shell script "sudo pmset -a disablesleep 1" with administrator privileges
+                set settingLidSleep to "1"
+                checkBoxLidSleep's setState_(1)
+            end try
+        else
+            try
+                do shell script "sudo pmset -a disablesleep 0" with administrator privileges
+                set settingLidSleep to "0"
+                checkBoxLidSleep's setState_(0)
+            end try
+        end if
+    end ToggleLidSleep_
         
     -- Run periodic scripts
     on RunPeriodicScripts_(sender)
