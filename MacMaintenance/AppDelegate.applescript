@@ -62,6 +62,7 @@ script AppDelegate
     property settingTransparentDockApps : missing value
     property settingDockSizePixel : 0
     property settingInitialSetup : missing value
+    property settingphp7builtinWebserver : missing value
     property settingEnableApache2Webserver : missing value
     property settingFinderShowFullPath : missing value
     property settingDockSingleAppMode : missing value
@@ -79,6 +80,7 @@ script AppDelegate
     property checkBoxScreenshotThumbnails : missing value
     property checkBoxTransparentDockApps : missing value
     property checkBoxInitialSetup : missing value
+    property checkBoxphp7builtinWebserver : missing value
     property checkBoxEnableApache2Webserver : missing value
     property checkBoxFinderShowFullPath : missing value
     property checkBoxDockSingleAppMode : missing value
@@ -208,6 +210,15 @@ script AppDelegate
             checkBoxEnableApache2Webserver's setState_(1)
         else
             checkBoxEnableApache2Webserver's setState_(0)
+        end if
+        -- Built-in php7 server
+        try
+            set settingphp7builtinWebserver to (do shell script "cat /etc/apache2/httpd.conf |grep libphp7.so|colrm 2")
+        end try
+        if settingphp7builtinWebserver is "L" then
+            checkBoxphp7builtinWebserver's setState_(1)
+        else if settingphp7builtinWebserver is "#" then
+            checkBoxphp7builtinWebserver's setState_(0)
         end if
         -- Check if presentation mode is running
         try
@@ -374,10 +385,10 @@ script AppDelegate
     -- Show user's Library folder
     on FinderLibraryFolder_(sender)
         if settingFinderLibraryFolder contains "hidden" then
-            do shell script "chflags nohidden ~/Library"
+            do shell script "setfile -a v ~/Library; chflags nohidden ~/Library"
             set settingFinderLibraryFolder to ""
         else
-            do shell script "chflags hidden ~/Library"
+            do shell script "setfile -a V ~/Library; chflags hidden ~/Library"
             set settingFinderLibraryFolder to "hidden"
         end if
     end FinderLibraryFolder_
@@ -756,6 +767,31 @@ script AppDelegate
             end try
         end if
     end StartApache2Webserver_
+    
+    -- Enable built-in php7 module
+    on Enablephp7Apache2_(sender)
+        if settingphp7builtinWebserver is "#" then
+            try
+                do shell script "mv /etc/apache2/httpd.conf /etc/apache2/httpd.conf.tmp && cat /etc/apache2/httpd.conf.tmp | sed -e 's/#LoadModule php7_module/LoadModule php7_module/' > /etc/apache2/httpd.conf && rm /etc/apache2/httpd.conf.tmp" with administrator privileges
+                set settingphp7builtinWebserver to "L"
+                if settingEnableApache2Webserver is "1" then
+                    do shell script "apachectl restart" with administrator privileges
+                end if
+            on error
+                checkBoxphp7builtinWebserver's setState_(0)
+            end try
+        else if settingphp7builtinWebserver is "L" then
+            try
+                do shell script "mv /etc/apache2/httpd.conf /etc/apache2/httpd.conf.tmp && cat /etc/apache2/httpd.conf.tmp | sed -e 's/LoadModule php7_module/#LoadModule php7_module/' > /etc/apache2/httpd.conf && rm /etc/apache2/httpd.conf.tmp" with administrator privileges
+                set settingphp7builtinWebserver to "#"
+                if settingEnableApache2Webserver is "1" then
+                    do shell script "apachectl restart" with administrator privileges
+                end if
+            on error
+                checkBoxphp7builtinWebserver's setState_(1)
+            end try
+        end if
+    end Enablephp7Apache2_
   
     -- ######################## HELP MENU ########################
    
