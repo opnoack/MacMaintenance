@@ -93,9 +93,9 @@ script AppDelegate
         -- Highlight Finder toolbar object
         toolbar's setSelectedItemIdentifier_("toolbarFinder")
         
-        -- Get the macOS version (e.g. 13.0.1)
+        -- Get the macOS version (e.g. 11.7.1)
         set productVersion to (do shell script "sw_vers -productVersion")
-        if productVersion doesn't start with "13"
+        if productVersion doesn't start with "11"
             display alert (localized string "CompatibilityWarning") buttons {"Acknowledge"}
         end if
         
