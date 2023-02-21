@@ -8,6 +8,7 @@
 "DialogCloseApps" = "All running applications will be closed now, all unsaved changes will be lost.";
 "RestartToWork" = "You will need to restart your system to apply the changes.";
 "DockSize" = "Enter the desired size of the dock (from 1 to 128):";
-"DockAutoHideDelay" = "Enter the desired hiding delay of the Dock in seconds (from 0.0 to 3.0)";
+"DockAutoHideDelay" = "Enter the desired hiding delay of the Dock in seconds (from 0.0 to 3.0):";
 "DockAnimationSpeed" = "Enter a desired modificator for the animation speed of the hiding Dock (from 0.0 to 3.0):";
 "CompatibilityWarning" = "Please note that this version of MacMaintenance has not been tested with this version of macOS. Please check for updates and proceed with caution.";
+"RecentlyUsedApplications" = "Enter the amount of recently used applications that you would like to see in your dock (default is 3):";

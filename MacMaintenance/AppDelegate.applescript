@@ -2,7 +2,7 @@
 --  AppDelegate.applescript
 --  MacMaintenance
 --
---  Initially created by Oliver Philipp Noack on 15.05.13.
+--  Initially created by Oliver Philipp Noack on 15.05.13 (15th of May 2013)
 --
 
 script AppDelegate
@@ -70,6 +70,7 @@ script AppDelegate
     property settingMediumTypeExitCode : missing value
     property settingPresentationMode : missing value
     property settingLidSleep : missing value
+    property settingRecentlyUsedApplications: 3
     
     -- Checkboxes
     property checkBoxFinderHiddenFiles : missing value
@@ -524,6 +525,22 @@ script AppDelegate
             end if
         end try
     end DockSizePixel_
+    
+    -- Set amount of recently used applications in Dock
+    on RecentlyUsedApplications_(sender)
+        try
+            display dialog (localized string "RecentlyUsedApplications") default answer settingRecentlyUsedApplications
+            try
+                set answerRecentlyUsedApplications to (text returned of result) as integer
+            end try
+            if (answerRecentlyUsedApplications is greater than "0") and (answerRecentlyUsedApplications is less than "129") then
+                set settingRecentlyUsedApplications to answerRecentlyUsedApplications
+                do shell script "defaults write com.apple.dock show-recents -bool true"
+                do shell script "defaults write com.apple.dock show-recent-count -int "&settingRecentlyUsedApplications
+                do shell script "killall Dock"
+            end if
+        end try
+    end RecentlyUsedApplications_
     
     -- Add a blank space to the Dock
     on DockAddBlankSpace_(sender)
