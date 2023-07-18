@@ -276,7 +276,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = "";
 				VALID_ARCHS = x86_64;
@@ -323,7 +323,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				SDKROOT = "";
 				VALID_ARCHS = x86_64;
 			};
@@ -343,8 +343,8 @@
 				GCC_PREFIX_HEADER = "MacMaintenance/MacMaintenance-Prefix.pch";
 				INFOPLIST_FILE = "MacMaintenance/MacMaintenance-Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
-				MARKETING_VERSION = 13.0.4;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 14.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.oliverphilippnoack.MacMaintenance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -367,8 +367,8 @@
 				GCC_PREFIX_HEADER = "MacMaintenance/MacMaintenance-Prefix.pch";
 				INFOPLIST_FILE = "MacMaintenance/MacMaintenance-Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
-				MARKETING_VERSION = 13.0.4;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 14.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.oliverphilippnoack.MacMaintenance;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

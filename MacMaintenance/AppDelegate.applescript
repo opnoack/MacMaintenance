@@ -96,7 +96,7 @@ script AppDelegate
         
         -- Get the macOS version (e.g. 13.0.1)
         set productVersion to (do shell script "sw_vers -productVersion")
-        if productVersion doesn't start with "13"
+        if productVersion doesn't start with "14"
             display alert (localized string "CompatibilityWarning") buttons {"Acknowledge"}
         end if
         
